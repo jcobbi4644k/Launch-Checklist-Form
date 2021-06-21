@@ -16,6 +16,10 @@ window.addEventListener("load", function(){
          event.preventDefault();
       } else if (isNaN(pilotInput) !=== true || isNaN(cargoInput) !=== true) {
          alert("Please enter valid pilot ans copilot names. Must not be a number");
+         event.preventDefault();
+      } else {
+         document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotInput} Status: Ready For Launch.`;
+         document.getElementById("copilotStatus").innerHTML = `Co-pilot ${coPilotInput} Status: Ready For Launch.`;
       }
 
    })
