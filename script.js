@@ -20,6 +20,15 @@ window.addEventListener("load", function(){
       } else {
          document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotInput} Status: Ready For Launch.`;
          document.getElementById("copilotStatus").innerHTML = `Co-pilot ${coPilotInput} Status: Ready For Launch.`;
+         if (fuelInput < 10000) {
+            document.getElementById("faultyItems").style.visibility = "visible";
+            document.getElementById("launchStatus").innerHTML = "Shuttle Not ready For Launch";
+            document.getElementById("launchStatus").style.color = "red";
+            document.getElementById("fuelStatus").innerHTML = `Fuel level: ${fuelInput} is less than the 10,000L required for trip. Status: Not Ready For Launch`;
+         } else {
+            document.getElementById("fuelStatus").innerHTML = `Fuel level ${fuelInput} is above the 10,000L required for launch. Status: Ready For launch`;
+         }
+         
       }
 
    })
