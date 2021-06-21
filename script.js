@@ -36,9 +36,18 @@ window.addEventListener("load", function(){
          } else {
             document.getElementById("cargoStatus").innerHTML = `Cargo mass ${cargoInput} is under 10,0001kg. Status: Ready For Launch`;
          } 
+         if (cargoInput <= 10000 & fuelInput >= 10000) {
+            document.getElementById('launchStatus').innerHTML = "Shuttle ready For Launch";
+            document.getElementById("launchStatus").style.color = "green";
+            document.getElementById("faultyItems").style.visibility = "visible"
+         }
+         event.preventDefault();
       }
 
-   })
+   });
+
+
+   
 })
 /* This block of code shows how to format the HTML once you fetch some planetary JSON!
 <h2>Mission Destination</h2>
