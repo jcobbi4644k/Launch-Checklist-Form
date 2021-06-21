@@ -13,7 +13,9 @@ window.addEventListener("load", function(){
          event.preventDefault();
       } else if (isNaN(fuelInput) === true || isNaN(cargoInput) === true) {
          alert("Fuel Level and Cargo mass must be numbers. Fuel minimum is 10,000 L, and Cargo maximum is 10,000 kilograms");
-         
+         event.preventDefault();
+      } else if (isNaN(pilotInput) !=== true || isNaN(cargoInput) !=== true) {
+         alert("Please enter valid pilot ans copilot names. Must not be a number");
       }
 
    })
