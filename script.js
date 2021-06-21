@@ -1,7 +1,7 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", function(){
-   let form = document.querySelector("form");
+   let form = document.querySelector("form"); 
    form.addEventListener("submit", function(event) {
       let pilotInput = document.getElementById("pilotName").value;
       let coPilotInput = document.getElementById("coPilotName").value;
@@ -22,4 +22,3 @@ window.addEventListener("load", function(){
 <img src="${}">
 */
 
-Function
