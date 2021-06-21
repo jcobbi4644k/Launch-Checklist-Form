@@ -28,7 +28,14 @@ window.addEventListener("load", function(){
          } else {
             document.getElementById("fuelStatus").innerHTML = `Fuel level ${fuelInput} is above the 10,000L required for launch. Status: Ready For launch`;
          }
-         
+         if (cargoInput > 10000) {
+            document.getElementById("faultyItems").style.visibility = "visible";
+            document.getElementById("launchStatus").innerHTML = "Shuttle Not ready For Launch";
+            document.getElementById("launchStatus").style.color = "red";
+            document.getElementById("cargoStatus").innerHTML = `Current weight of ${cargoInput}kg is over the cargo weight limit of 10,000kg. Status: Not Ready For Launch`;
+         } else {
+            document.getElementById("cargoStatus").innerHTML = `Cargo mass ${cargoInput} is under 10,0001kg. Status: Ready For Launch`;
+         } 
       }
 
    })
