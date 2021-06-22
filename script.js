@@ -3,20 +3,26 @@
 window.addEventListener("load", function(){
    let form = document.querySelector("form"); 
    form.addEventListener("submit", function(event) {
+      event.preventDefault();
       let pilotInput = document.getElementById("pilotName").value;
-      let coPilotInput = document.getElementById("coPilotName").value;
-      let fuelInput = document.getElementById("fuelValue").value;
-      let cargoInput = document.getElementById("cargoValue").value;
+      let coPilotInput = document.getElementById("copilotName").value;
+      let fuelInput = document.getElementById("fuelLevel").value;
+      let cargoInput = document.getElementById("cargoMass").value;
+      console.log(pilotInput)
+      console.log(coPilotInput)
+      console.log(fuelInput)
+      console.log(cargoInput)
+      
 
-      if ((pilotInput === '')||  (coPilotInput === ' ')|| (fuelInput === '')|| (cargoInput === '')) {
+      if ((pilotInput === '')||  (coPilotInput === '')|| (fuelInput === '')|| (cargoInput === '')) {
          alert("All information must be entered before takeoff can commence");
-         event.preventDefault();
-      } else if (isNaN(fuelInput) === true || isNaN(cargoInput) === true) {
+         
+      } else if (isNaN(fuelInput) || isNaN(cargoInput) ) {
          alert("Fuel Level and Cargo mass must be numbers. Fuel minimum is 10,000 L, and Cargo maximum is 10,000 kilograms");
-         event.preventDefault();
-      } else if (isNaN(pilotInput) !=== true || isNaN(cargoInput) !=== true) {
-         alert("Please enter valid pilot ans copilot names. Must not be a number");
-         event.preventDefault();
+         
+      } else if (!isNaN(pilotInput) || !isNaN(cargoInput)) {
+         alert("Please enter valid pilot and copilot names. Must not be a number");
+         
       } else {
          document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotInput} Status: Ready For Launch.`;
          document.getElementById("copilotStatus").innerHTML = `Co-pilot ${coPilotInput} Status: Ready For Launch.`;
@@ -36,12 +42,12 @@ window.addEventListener("load", function(){
          } else {
             document.getElementById("cargoStatus").innerHTML = `Cargo mass ${cargoInput} is under 10,0001kg. Status: Ready For Launch`;
          } 
-         if (cargoInput <= 10000 & fuelInput >= 10000) {
+         if (cargoInput <= 10000 && fuelInput >= 10000) {
             document.getElementById('launchStatus').innerHTML = "Shuttle ready For Launch";
             document.getElementById("launchStatus").style.color = "green";
             document.getElementById("faultyItems").style.visibility = "visible"
          }
-         event.preventDefault();
+         
       }
 
    });
@@ -50,7 +56,7 @@ window.addEventListener("load", function(){
    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
       response.json().then(function(json) {
          const div = document.getElementById("missionTarget");
-         cont planet = Math.round(Math.round()*5);
+         const planet = Math.floor(Math.round()*5);
          div.innerHTML = `
          <h2>Mission Destination</h2>
       <ol>
